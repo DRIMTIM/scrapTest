@@ -25,7 +25,7 @@ function grab_image($url,$saveto){
         var_dump($e);
     }
 }
-$urlDGI = "https://servicios.dgi.gub.uy/Captcha/GetImage?resource=urlJpgCaptcha&parms=challengeId=f2c2cdf8-2f29-4cbe-b16a-b092a37e7e6a";
+$urlDGI = "https://";
 $homePath = "capcha.jpg";
 
 grab_image($urlDGI, $homePath);
