@@ -3,6 +3,10 @@
 include("anticaptcha.php");
 include("imagetotext.php");
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 function grab_image($url,$saveto){
     $ch = curl_init ($url);
     curl_setopt($ch, CURLOPT_HEADER, 0);
@@ -14,15 +18,15 @@ function grab_image($url,$saveto){
         unlink($saveto);
     }
     try {
-        $fp = fopen($saveto,'r+');
+        $fp = fopen($saveto,'x');
         fwrite($fp, $raw);
         fclose($fp);
     } catch (Exception $e) {
         var_dump($e);
     }
 }
-$urlDGI = "https://servicios.dgi.gub.uy/Captcha/GetImage?resource=urlJpgCaptcha&parms=challengeId=81e0d27c-265f-4b8e-afb1-9832c0f9e1f7";
-$homePath = "/var/www/html/scrapTest/anticaptcha-php/captcha2.txt";
+$urlDGI = "https://servicios.dgi.gub.uy/Captcha/GetImage?resource=urlJpgCaptcha&parms=challengeId=f2c2cdf8-2f29-4cbe-b16a-b092a37e7e6a";
+$homePath = "capcha.jpg";
 
 grab_image($urlDGI, $homePath);
 
